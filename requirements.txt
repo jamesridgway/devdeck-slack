@@ -1,0 +1,4 @@
+assertpy
+devdeck-core
+pytest
+slack_sdk==3.1.0
