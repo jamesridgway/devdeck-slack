@@ -1,26 +1,29 @@
-# DevDeck - Core
-![CI](https://github.com/jamesridgway/devdeck_core/workflows/CI/badge.svg?branch=main)
+# DevDeck - Slack
+![CI](https://github.com/jamesridgway/devdeck-slack/workflows/CI/badge.svg?branch=main)
 
-Stream Deck control software for software developer's.
+Slack deck and controls for  [DevDeck](https://github.com/jamesridgway/devdeck).
 
-This is the core library for [DevDeck](https://github.com/jamesridgway/devdeck).
+Example configuration:
 
-Any controls or decks for DevDeck should be built using the core library.
-
-## Developing plugins for DevDeck
-TODO
-
-### Making a Control
-
-TODO
-
-### Making a Deck
-
-TODO
-
-## Making changes to devdeck_core
-
-1. Clone the repository
-2. Run `./setup.sh` to create a new virtual environment and install dependencies
-3. Run `./run-tests.sh` to ensure that you can run tests successfully
-4. That's it - get coding and enjoy!
+    decks:
+      - serial_number: "ABC123"
+        name: 'devdeck.decks.single_page_deck_controller.SinglePageDeckController'
+        settings:
+          controls:
+            - name: 'devdeck_slack.slack_deck.SlackDeck'
+              key: 0
+              settings:
+                api_key: 'YOUR_API_KEY_GOES_HERE'
+                actions:
+                  - action: online
+                    key: 0
+                  - action: away
+                    key: 1
+                  - action: status
+                    key: 5
+                    text: In a meeting
+                    emoji: ':calendar:'
+                  - action: status
+                    key: 6
+                    text: Lunch
+                    emoji: ':sandwich:'
