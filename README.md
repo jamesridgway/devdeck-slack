@@ -27,6 +27,30 @@ Example configuration:
                     key: 6
                     text: Lunch
                     emoji: ':sandwich:'
+                  - action: status
+                    key: 7
+                    text: Off sick
+                    emoji: ':face_with_thermometer:'
+                  - action: status
+                    key: 8
+                    text: On holiday
+                    emoji: ':palm_tree:'
+                  - action: dnd
+                    key: 10
+                    duration: 15
+                  - action: dnd
+                    key: 11
+                    duration: 30
+                  - action: dnd
+                    key: 12
+                    duration: 45
+                  - action: dnd
+                    key: 13
+                    duration: 60
+                  - action: dnd
+                    key: 14
+                    duration: 120
+
 
 ## Registering your app and creating permissions
 This plugin requires a Slack API key to function.
