@@ -27,3 +27,19 @@ Example configuration:
                     key: 6
                     text: Lunch
                     emoji: ':sandwich:'
+
+## Registering your app and creating permissions
+This plugin requires a Slack API key to function.
+
+Head over to https://api.slack.com/apps to create your app.
+
+Once you have created your app you will be able to access your OAuth Access Token under **OAuth & Permissions** - this 
+is your `api_key` value.
+
+### Scopes
+Under **User Token Scopes** you need want to enable the following scopes:
+
+* `dnd:read`
+* `dnd:write`
+* `users.profile:write`
+* `users:write`

@@ -4,6 +4,7 @@ from devdeck_core.decks.deck_controller import DeckController
 from slack_sdk import WebClient
 
 from devdeck_slack.slack_away_control import SlackAwayControl
+from devdeck_slack.slack_dnd_control import SlackDndControl
 from devdeck_slack.slack_online_control import SlackOnlineControl
 from devdeck_slack.slack_status_control import SlackStatusControl
 
@@ -14,6 +15,7 @@ class SlackDeck(DeckController):
             'online': SlackOnlineControl,
             'away': SlackAwayControl,
             'status': SlackStatusControl,
+            'dnd': SlackDndControl
         }
         super().__init__(key_no, **kwargs)
 
@@ -60,6 +62,10 @@ class SlackDeck(DeckController):
                             'type': 'string',
                             'required': False
                         },
+                        'duration': {
+                            'type': 'integer',
+                            'required': False
+                        }
                     }
                 }
             },

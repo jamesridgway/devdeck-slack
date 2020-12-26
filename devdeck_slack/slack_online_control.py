@@ -15,3 +15,7 @@ class SlackOnlineControl(DeckControl):
     def pressed(self):
         self.api_client.users_setPresence(presence='auto')
         self.api_client.users_profile_set(profile={"status_text": "", "status_emoji": ""})
+
+        dnd_info = self.api_client.dnd_info()
+        if dnd_info['snooze_enabled']:
+            self.api_client.dnd_endSnooze()
