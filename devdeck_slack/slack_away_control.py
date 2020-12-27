@@ -10,7 +10,8 @@ class SlackAwayControl(DeckControl):
 
     def initialize(self):
         with self.deck_context() as context:
-            context.set_icon(os.path.join(os.path.dirname(__file__), "../assets", 'away.png'))
+            with context.renderer() as r:
+                r.image(os.path.join(os.path.dirname(__file__), "assets", 'away.png')).end()
 
     def pressed(self):
         self.api_client.users_setPresence(presence='away')
