@@ -19,6 +19,7 @@ setup(
     version=get_version(),
     description="Slack deck and controls for DevDeck.",
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     author='James Ridgway',
     url='https://github.com/jamesridgway/devdeck-slack',
     license='MIT',
