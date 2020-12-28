@@ -3,6 +3,15 @@
 
 Slack deck and controls for  [DevDeck](https://github.com/jamesridgway/devdeck).
 
+## Installing
+Simplify install *DevDeck - Slack* into the same python environment that you have installed DevDeck.
+
+    pip install devdeck-slack
+
+You can then update your DevDeck configuration to use decks and controls from this package.
+
+## Configuration
+
 Example configuration:
 
     decks:
