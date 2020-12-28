@@ -21,7 +21,7 @@ class SlackDeck(DeckController):
 
     def initialize(self):
         with self.deck_context() as context:
-            context.set_icon(os.path.join(os.path.dirname(__file__), "../assets", 'slack.png'))
+            context.set_icon(os.path.join(os.path.dirname(__file__), "assets", 'slack.png'))
 
     def deck_controls(self):
         api_client = WebClient(token=self.settings['api_key'])
