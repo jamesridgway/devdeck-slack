@@ -3,6 +3,11 @@
 
 Slack deck and controls for  [DevDeck](https://github.com/jamesridgway/devdeck).
 
+In this example, you can manage your presence, status and do-not-disturb settings from your StreamDeck:
+
+![Stream Deck - Slack Integration using DevDeck](https://www.jamesridgway.co.uk/content/images/2020/12/streamdeck-slack.jpg)
+
+
 ## Installing
 Simplify install *DevDeck - Slack* into the same python environment that you have installed DevDeck.
 
