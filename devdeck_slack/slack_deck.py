@@ -63,6 +63,10 @@ class SlackDeck(DeckController):
                             'type': 'string',
                             'required': False
                         },
+                        'emoji_slack': {
+                            'type': 'string',
+                            'required': False
+                        },
                         'dnd': {
                             'type': 'boolean',
                             'required': False

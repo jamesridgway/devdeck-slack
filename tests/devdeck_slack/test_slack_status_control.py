@@ -31,6 +31,20 @@ class TestSlackStatusControl:
             api_client.dnd_setSnooze.assert_not_called()
 
     @mock.patch('slack_sdk.WebClient')
+    def test_pressed_sets_status_alt_emoji(self, api_client):
+        control = SlackStatusControl(0, api_client, **{
+            'emoji': ':sandwich:', 'text': 'On lunch', 'emoji_slack': ':test:'
+        })
+        with mock_context(control) as ctx:
+            control.pressed()
+            api_client.users_profile_set.assert_called_with(profile={
+                'status_text': 'On lunch',
+                'status_emoji': ':test:',
+                'status_expiration': 0
+            })
+            api_client.dnd_setSnooze.assert_not_called()
+
+    @mock.patch('slack_sdk.WebClient')
     def test_dnd_set_without_timeout(self, api_client):
         control = SlackStatusControl(0, api_client, **{
             'emoji': ':calendar:', 'text': 'Busy', 'dnd': True

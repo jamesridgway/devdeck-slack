@@ -34,7 +34,8 @@ class SlackStatusControl(DeckControl):
         dnd = self.settings.get('dnd', False)
         self.api_client.users_profile_set(profile={
             "status_text": self.settings['text'],
-            "status_emoji": self.settings['emoji'],
+            "status_emoji": self.settings.get('emoji_slack',
+                                              self.settings['emoji']),
             "status_expiration": expires
         })
         if dnd:
@@ -53,6 +54,10 @@ class SlackStatusControl(DeckControl):
             'emoji': {
                 'type': 'string',
                 'required': True,
+            },
+            'emoji_slack': {
+                'type': 'string',
+                'required': False
             },
             'dnd': {
                 'type': 'boolean',
