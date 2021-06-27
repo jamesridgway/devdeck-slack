@@ -45,6 +45,7 @@ Example configuration:
                     key: 7
                     text: Off sick
                     emoji: ':face_with_thermometer:'
+                    until: tomorrow at 8am
                   - action: status
                     key: 8
                     text: On holiday
@@ -71,7 +72,7 @@ This plugin requires a Slack API key to function.
 
 Head over to https://api.slack.com/apps to create your app.
 
-Once you have created your app you will be able to access your OAuth Access Token under **OAuth & Permissions** - this 
+Once you have created your app you will be able to access your OAuth Access Token under **OAuth & Permissions** - this
 is your `api_key` value.
 
 ### Scopes
