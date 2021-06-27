@@ -2,7 +2,8 @@ import logging
 import math
 import time
 
-import dateparser
+import parsedatetime
+import tzlocal
 
 from devdeck_core.controls.deck_control import DeckControl
 
@@ -11,6 +12,8 @@ class SlackStatusControl(DeckControl):
     def __init__(self, key_no, api_client, **kwargs):
         self.api_client = api_client
         self.__logger = logging.getLogger('devdeck')
+        self.cal = parsedatetime.Calendar(
+            version=parsedatetime.VERSION_CONTEXT_STYLE)
         super().__init__(key_no, **kwargs)
 
     def initialize(self):
@@ -24,8 +27,8 @@ class SlackStatusControl(DeckControl):
         if 'duration' in self.settings:
             expires = int(time.time()) + self.settings['duration'] * 60
         elif 'until' in self.settings:
-            dt = dateparser.parse(self.settings['until'],
-                                  settings={'RETURN_AS_TIMEZONE_AWARE': True})
+            dt, _ = self.cal.parseDT(self.settings['until'],
+                                     tzinfo=tzlocal.get_localzone())
             if dt is None:
                 self.__logger.error("Could not parse until: %s",
                                     self.settings['until'])

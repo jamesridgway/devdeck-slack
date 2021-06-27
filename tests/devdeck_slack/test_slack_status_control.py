@@ -2,7 +2,8 @@ import math
 from unittest import mock
 import time
 
-import dateparser
+import parsedatetime
+import tzlocal
 
 from devdeck_core.mock_deck_context import mock_context, assert_rendered
 from devdeck_core.renderer import Renderer
@@ -78,8 +79,8 @@ class TestSlackStatusControl:
             'emoji': ':calendar:', 'text': 'Busy', 'dnd': True,
             'until': 'tomorrow at 7am'
         })
-        ts = dateparser.parse('tomorrow at 7am',
-                              settings={'RETURN_AS_TIMEZONE_AWARE': True})
+        c = parsedatetime.Calendar(version=parsedatetime.VERSION_CONTEXT_STYLE)
+        ts, _ = c.parseDT('tomorrow at 7am', tzinfo=tzlocal.get_localzone())
         minutes = int(math.ceil((ts.timestamp() - time.time()) / 60))
         with mock_context(control) as ctx:
             control.pressed()
