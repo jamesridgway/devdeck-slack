@@ -1,5 +1,5 @@
 assertpy
-devdeck-core==1.0.6
+devdeck-core==1.0.7
 pytest
 slack_sdk==3.1.0
 parsedatetime
