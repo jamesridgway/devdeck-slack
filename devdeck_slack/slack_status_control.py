@@ -35,6 +35,7 @@ class SlackStatusControl(DeckControl):
             else:
                 expires = int(dt.timestamp())
         dnd = self.settings.get('dnd', False)
+        clear_dnd = self.settings.get('clear_dnd', False)
         self.api_client.users_profile_set(profile={
             "status_text": self.settings['text'],
             "status_emoji": self.settings.get('emoji_slack',
@@ -47,6 +48,8 @@ class SlackStatusControl(DeckControl):
                 self.api_client.dnd_setSnooze(num_minutes=minutes)
             else:
                 self.api_client.dnd_setSnooze()
+        elif clear_dnd:
+            self.api_client.dnd_endDnd()
 
     def settings_schema(self):
         return {
@@ -64,7 +67,13 @@ class SlackStatusControl(DeckControl):
             },
             'dnd': {
                 'type': 'boolean',
-                'required': False
+                'required': False,
+                'excludes': 'clear_dnd'
+            },
+            'clear_dnd': {
+                'type': 'boolean',
+                'required': False,
+                'excludes': 'dnd'
             },
             'duration': {
                 'type': 'integer',

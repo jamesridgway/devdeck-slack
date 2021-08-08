@@ -69,7 +69,13 @@ class SlackDeck(DeckController):
                         },
                         'dnd': {
                             'type': 'boolean',
-                            'required': False
+                            'required': False,
+                            'excludes': 'clear_dnd'
+                        },
+                        'clear_dnd': {
+                            'type': 'boolean',
+                            'required': False,
+                            'excludes': 'dnd'
                         },
                         'duration': {
                             'type': 'integer',

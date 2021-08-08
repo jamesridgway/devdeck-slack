@@ -90,3 +90,12 @@ class TestSlackStatusControl:
                 'status_expiration': int(ts.timestamp())
             })
             api_client.dnd_setSnooze.assert_called_with(num_minutes=minutes)
+
+    @mock.patch('slack_sdk.WebClient')
+    def test_dnd_cleared(self, api_client):
+        control = SlackStatusControl(0, api_client, **{
+            'text': '', 'emoji': ':desktop_computer:', 'clear_dnd': True
+        })
+        with mock_context(control) as ctx:
+            control.pressed()
+            api_client.dnd_endDnd.assert_called()
