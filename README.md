@@ -34,6 +34,11 @@ Example configuration:
                   - action: away
                     key: 1
                   - action: status
+                    key: 2
+                    text: At my desk
+                    emoji: ':desktop_computer:'
+                    clear_dnd: true
+                  - action: status
                     key: 5
                     text: In a meeting
                     emoji: ':calendar:'
